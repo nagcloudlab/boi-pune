@@ -1,4 +1,4 @@
-package com.boi.model;
+package com.example;
 
 public class Apple {
 

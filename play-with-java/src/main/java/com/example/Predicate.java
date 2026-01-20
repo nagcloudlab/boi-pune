@@ -1,6 +1,4 @@
-package com.boi;
-
-import com.boi.model.Apple;
+package com.example;
 
 @FunctionalInterface
 // SAM -> Single Abstract Method

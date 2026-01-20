@@ -1,6 +1,4 @@
-package com.boi;
-
-import com.boi.model.Apple;
+package com.example;
 
 import java.util.ArrayList;
 import java.util.List;

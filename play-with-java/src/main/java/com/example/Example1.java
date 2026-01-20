@@ -1,13 +1,26 @@
-package com.boi;
+package com.example;
 
-import com.boi.model.Apple;
-
-import java.util.ArrayList;
 import java.util.List;
+
+
+// style of coding
+//------------------------
+// 1.imperative style
+// -> solving problem using ste-by-step approach
+// problem:
+// -> intention + implementation mixed together
+
+// solution:
+// 2. declarative style
+// - by param(s)
+//        -> value | object
+// intention & implementation separated..
+// -> pass behavior (function) as parameter
+// -> functional programming
+// -> strategy design pattern
 
 public class Example1 {
     public static void main(String[] args) {
-
 
         List<Apple> inventory = List.of(
                 new Apple("green", 150),
@@ -15,14 +28,8 @@ public class Example1 {
                 new Apple("green", 200));
 
 
-        // Req-1 : filter green apples
-
-        List<Apple> result = AppleLib.filterApples(inventory, new GreenApplePredicate());
-        System.out.println(result);
-
-
         // Req2 : filter red apples
-        result = AppleLib.filterApples(inventory, new RedApplePredicate());
+        List<Apple> result = AppleLib.filterApples(inventory, new RedApplePredicate());
         System.out.println(result);
 
         // Req3 : filter heavy-weight Apples ( > 150 )
@@ -41,17 +48,4 @@ public class Example1 {
 
     }
 
-
 }
-
-
-// style of coding
-// imperative style
-// -> solving problem using ste-by-step approach
-// -> intention + implementation mixed together
-
-// solution:
-// declarative style
-// - by param(s)
-//        -> value | object
-// intention & implementation separated..

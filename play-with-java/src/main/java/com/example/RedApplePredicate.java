@@ -1,6 +1,4 @@
-package com.boi;
-
-import com.boi.model.Apple;
+package com.example;
 
 public class RedApplePredicate implements Predicate{
     @Override
