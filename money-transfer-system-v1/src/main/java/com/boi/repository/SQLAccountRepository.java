@@ -7,12 +7,12 @@ import org.slf4j.LoggerFactory;
 /**
  * team: team-1
  */
-public class JdbcAccountRepository {
+public class SQLAccountRepository implements AccountRepository {
 
     private static Logger logger = LoggerFactory.getLogger("boi");
 
-    public JdbcAccountRepository(){
-        logger.info("JdbcAccountRepository initialized.");
+    public SQLAccountRepository(){
+        logger.info("SQLAccountRepository initialized.");
     }
 
     public Account loadAccount(String accountNumber) {

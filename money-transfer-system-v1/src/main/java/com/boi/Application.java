@@ -1,5 +1,8 @@
 package com.boi;
 
+import com.boi.repository.AccountRepository;
+import com.boi.repository.AccountRepositoryFactory;
+import com.boi.service.TransferService;
 import com.boi.service.UPITransferService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +18,9 @@ public class Application {
         //---------------------------------------
         System.out.println("-".repeat(50));
         // based on configuration, initialize components
-        UPITransferService transferService = new UPITransferService();
+        AccountRepository sqlAccountRepository = AccountRepositoryFactory.getAccountRepository("SQL");
+        AccountRepository noSqlAccountRepository = AccountRepositoryFactory.getAccountRepository("NoSQL");
+        TransferService upiTransferService = new UPITransferService(sqlAccountRepository);
 
         logger.info("Money Transfer System Initialized.");
         logger.info("-".repeat(50));
@@ -28,7 +33,9 @@ public class Application {
         String toAccount = "user2@bank";
         double amount = 1000.00;
 
-        transferService.transfer(amount, fromAccount, toAccount);
+        upiTransferService.transfer(amount, fromAccount, toAccount);
+        logger.info("-".repeat(25));
+        upiTransferService.transfer(amount, fromAccount, toAccount);
 
         logger.info("-".repeat(50));
         //---------------------------------------
