@@ -3,6 +3,8 @@ package com.boi.repository;
 import com.boi.model.Account;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import javax.xml.crypto.Data;
@@ -12,12 +14,14 @@ import java.sql.SQLException;
 /**
  * team: team-1
  */
+@Component("sqlAccountRepository")
 public class SQLAccountRepository implements AccountRepository {
 
     private static Logger logger = LoggerFactory.getLogger("boi");
 
     private DataSource dataSource;
 
+    @Autowired
     public SQLAccountRepository(DataSource dataSource){
         this.dataSource = dataSource;
         logger.info("SQLAccountRepository initialized.");

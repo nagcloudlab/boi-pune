@@ -7,6 +7,9 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:annotation-config/>
+    <context:component-scan base-package="com.boi"/>
+
     <bean id="datasource"  class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"/>
         <property name="url" value="jdbc:postgresql://localhost:55000/postgres"/>
@@ -16,13 +19,13 @@
         <property name="maxTotal" value="10"/>
     </bean>
 
-    <bean id="sqlAccountRepository" class="com.boi.repository.SQLAccountRepository">
-        <constructor-arg ref="datasource"/>
-    </bean>
-    <bean id="nosqlAccountRepository" class="com.boi.repository.NoSQLAccountRepository"/>
-    <bean id="upiTransferService" class="com.boi.service.UPITransferService">
-        <constructor-arg ref="sqlAccountRepository"/>
-    </bean>
+<!--    <bean id="sqlAccountRepository" class="com.boi.repository.SQLAccountRepository">-->
+<!--        <constructor-arg ref="datasource"/>-->
+<!--    </bean>-->
+<!--    <bean id="nosqlAccountRepository" class="com.boi.repository.NoSQLAccountRepository"/>-->
+<!--    <bean id="upiTransferService" class="com.boi.service.UPITransferService">-->
+<!--        <constructor-arg ref="sqlAccountRepository"/>-->
+<!--    </bean>-->
 
 
 

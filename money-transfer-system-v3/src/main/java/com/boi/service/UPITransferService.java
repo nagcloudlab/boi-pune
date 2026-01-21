@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 /*
 
@@ -97,6 +99,10 @@ public class UPITransferService implements TransferService {
         logger.info("UPITransferService initialized.");
     }
 
+    @Transactional(
+            isolation = Isolation.REPEATABLE_READ,
+            rollbackFor = RuntimeException.class
+    )
     public void transfer(double amount, String fromUPI, String toUPI) {
         logger.info("Initiating transfer of amount: " + amount + " from " + fromUPI + " to " + toUPI);
 

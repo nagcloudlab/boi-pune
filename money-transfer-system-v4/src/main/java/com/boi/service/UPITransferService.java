@@ -2,12 +2,13 @@ package com.boi.service;
 
 import com.boi.model.Account;
 import com.boi.repository.AccountRepository;
-import com.boi.repository.AccountRepositoryFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 /*
 
@@ -97,22 +98,26 @@ public class UPITransferService implements TransferService {
         logger.info("UPITransferService initialized.");
     }
 
+    @Transactional(
+            isolation = Isolation.REPEATABLE_READ,
+            rollbackFor = RuntimeException.class
+    )
     public void transfer(double amount, String fromUPI, String toUPI) {
         logger.info("Initiating transfer of amount: " + amount + " from " + fromUPI + " to " + toUPI);
 
-        //SQLAccountRepository accountRepository = new SQLAccountRepository(); // Don't create
-        //AccountRepository accountRepository = AccountRepositoryFactory.getAccountRepository("SQL"); // Use Factory but lead performance issue
-        Account fromAccount = accountRepository.loadAccount(fromUPI);
-        Account toAccount = accountRepository.loadAccount(toUPI);
+        Account fromAccount = accountRepository.findById(Integer.parseInt(fromUPI))
+                .orElseThrow(()-> new RuntimeException("Source account not found: " + fromUPI));
+        Account toAccount = accountRepository.findById(Integer.parseInt(toUPI))
+                .orElseThrow(()-> new RuntimeException("Destination account not found: " + toUPI));
 
         fromAccount.debit(amount);
         toAccount.credit(amount);
 
-        accountRepository.updateAccount(fromAccount);
-        if(true){
-            throw new RuntimeException("Simulated failure during transfer process.");
+        accountRepository.save(fromAccount);
+        if(false){
+            throw new RuntimeException("Simulawted failure during transfer process.");
         }
-        accountRepository.updateAccount(toAccount);
+        accountRepository.save(toAccount);
 
         logger.info("Transfer completed successfully.");
 
