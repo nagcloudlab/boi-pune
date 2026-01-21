@@ -13,11 +13,11 @@ public class MoneyTransferSystemApplication {
         SpringApplication.run(MoneyTransferSystemApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner commandLineRunner(TransferServiceImpl transferService) {
-        return args -> {
-            transferService.transfer("1", "2", 100.0);
-        };
-    }
+//    @Bean
+//    public CommandLineRunner commandLineRunner(TransferServiceImpl transferService) {
+//        return args -> {
+//            transferService.transfer("1", "2", 100.0);
+//        };
+//    }
 
 }
