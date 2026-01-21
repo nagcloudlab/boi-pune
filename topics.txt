@@ -1,0 +1,14 @@
+
+- importance of functional programming
+- SOLID principles in software design
+- why spring-framework is popular ( as IOC container to business components)
+- Spring framework configuration approaches 
+    - XML configuration ( deprecated)
+    - Annotation-based configuration
+    - Java-based configuration ( modern approach)
+- spring-boot - as auto-configuration framework for spring applications    
+- exploring spring projects
+    - Spring Data 
+           - jdbc api
+           - JPA ( Java Persistence API) -> ORM ( Object Relational Mapping)
+             - hibernate ( popular JPA implementation)
