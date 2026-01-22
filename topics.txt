@@ -12,3 +12,14 @@
            - jdbc api
            - JPA ( Java Persistence API) -> ORM ( Object Relational Mapping)
              - hibernate ( popular JPA implementation)
+    - Spring Web
+           - traditional Spring MVC for web applications 
+           - building RESTful web services using Spring MVC         
+- introduction to microservices architecture
+- spring-boot based microservices development
+    - using REST for communication between microservices
+    - using messaging queues ( RabbitMQ, Apache Kafka) for communication between microservices           
+
+- dev to ops ( cloud )
+
+------------------------------------------

@@ -1,4 +1,4 @@
-package com.boi;
+package com.boi.dto;
 
 public class TransferResponse {
     private String status;
